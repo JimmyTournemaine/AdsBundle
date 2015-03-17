@@ -1,0 +1,45 @@
+ads:
+    path:     /
+    defaults: { _controller: "JTAdsBundle:Ads:index" }
+
+ads_research:
+    path:     /research
+    defaults: { _controller: "JTAdsBundle:Ads:research" }
+    requirements: { _method: POST }
+
+ads_show:
+    path:     /{slug}/show
+    defaults: { _controller: "JTAdsBundle:Ads:show" }
+    requirements: { slug: "[a-z0-9-]+" }
+
+ads_new:
+    path:     /new
+    defaults: { _controller: "JTAdsBundle:Ads:new" }
+
+ads_create:
+    path:     /create
+    defaults: { _controller: "JTAdsBundle:Ads:create" }
+    requirements: { _method: post }
+
+ads_edit:
+    path:     /{slug}/edit
+    defaults: { _controller: "JTAdsBundle:Ads:edit" }
+
+ads_update:
+    path:     /{slug}/update
+    defaults: { _controller: "JTAdsBundle:Ads:update" }
+    requirements: { _method: post|put }
+    
+ads_delete:
+    path:     /{slug}/delete
+    defaults: { _controller: "JTAdsBundle:Ads:delete" }
+    requirements: { _method: post|delete }
+    
+ads_contact:
+    path:     /{slug}/contact
+    defaults: { _controller: "JTAdsBundle:Ads:contact" }
+    
+ads_send:
+    path:     /{slug}/send
+    defaults: { _controller: "JTAdsBundle:Ads:send" }
+    requirements: { _method: post }

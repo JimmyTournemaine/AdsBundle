@@ -1,0 +1,10 @@
+{% extends "::baseMail.html.twig" %}
+
+{% block body %}
+<p>Bonjour, {{ ads.seller.username }} !</p>
+<p class="small">Ceci est un message automatique de la part de {{ project_name }}, il est inutile de répondre à cette adresse.</p>
+
+	{% block content %}{% endblock %}
+
+<p>Cordialement. L'équipe de {{ project_name }}.</p>
+{% endblock %}

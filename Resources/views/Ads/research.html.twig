@@ -1,0 +1,19 @@
+{% extends "JTAdsBundle::layout.html.twig" %}
+
+{% block content %}
+
+	{% include "JTAdsBundle:Ads:research_form.html.twig" %}
+	
+	{% set size = ads|length %}
+	<div>
+		{% if size > 1 %}
+			<strong>{{ size }} résultats de recherche</strong>
+		{% else %}
+			<strong>{{ size }} résultat de recherche</strong>
+		{% endif %}
+	</div>
+	
+	<div id="resultats_recherche">
+    	{% include 'JTAdsBundle:Ads:list.html.twig' with {'entities' : ads}  %}
+	</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'JTAdsBundle::layout.html.twig' %}
+
+{% block content %}
+    
+    <h3>Question posée</h3>
+	{{ render(controller("JTAdsBundle:Issue:show", {'ads_slug': ads.slug, 'id': issue.id })) }}
+    
+    <h3>Votre réponse</h3>
+    {{ form(form) }}
+
+{% endblock %}
+
+{% block actions %}
+<li role="presentation"><a href="{{ path('ads_show', {'slug': ads.slug}) }}">Retour à l'annonce</a></li>
+{% endblock %}

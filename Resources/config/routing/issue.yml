@@ -1,0 +1,33 @@
+issue_show:
+    path:     /{ads_slug}/{id}
+    defaults: { _controller: "JTAdsBundle:Issue:show" }
+    requirements:
+        ads_slug: "[a-z0-9-]+"
+        id: "[0-9]+"
+    
+issue_new:
+    path:     /{ads_slug}/new
+    defaults: { _controller: "JTAdsBundle:Issue:new" }
+    requirements:
+        ads_slug: "[a-z0-9-]+"
+
+issue_create:
+    path:     /{ads_slug}/create
+    defaults: { _controller: "JTAdsBundle:Issue:create" }
+    methods:  POST
+    requirements:
+        ads_slug: "[a-z0-9-]+"
+
+issue_edit:
+    path:     /{ads_slug}/{id}/edit
+    defaults: { _controller: "JTAdsBundle:Issue:edit" }
+
+issue_update:
+    path:     /{ads_slug}/{id}/update
+    defaults: { _controller: "JTAdsBundle:Issue:update" }
+    methods:  [POST, PUT]
+
+issue_delete:
+    path:     /{ads_slug}/{id}/delete
+    defaults: { _controller: "JTAdsBundle:Issue:delete" }
+    methods:  [POST, DELETE]

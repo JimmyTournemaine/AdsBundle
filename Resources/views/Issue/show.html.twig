@@ -1,0 +1,39 @@
+			<div class="row">
+    			<div class="panel panel-default">
+    				<div class="panel-heading">
+    					<h4 class="panel-title">{{ issue.title }}
+    						<span class="pull-right">
+    							<small>
+    								Part {{ issue.questioner.username }}, 
+    								le {{ issue.createdAt|localizeddate('short','short',app.request.locale) }}
+    							</small>
+    						</span>
+    					</h4>
+    				</div>
+    				<div class="panel-body">
+    					<p>
+    						<strong>Question :</strong> {{ issue.content }}
+	    					{%  if issue.answer is null and is_granted('EDIT', issue) %}
+	    						<a href="{{ path('issue_edit', {'ads_slug': issue.ads.slug, 'id': issue.id}) }}"">Modifier</a>
+	    					{% endif %}
+	    					{% if is_granted('ROLE_ADS_MODERATOR') %}
+	    						<div class="pull-right">{{ form(delete_form) }}</div>
+	    					{% endif %}
+	    				</p>
+    					
+	    				<p><strong>Réponse : </strong><br />
+	    					{% if issue.answer %}
+			    				{{ issue.answer.content }}
+			    				{% if is_granted('OWNER', issue.ads) %}
+			    					<a href="{{ path('answer_edit', {'ads_slug': issue.ads.slug, 'issue_id': issue.id, 'id': issue.answer.id }) }}">Modifier</a>
+			    				{% endif %}
+			    			{% else %}
+			    				<em>Le vendeur n'a pas encore répondu.</em>
+			    				{% if is_granted('OWNER', issue.ads) %}
+			    					<a href="{{ path('answer_new', {'ads_slug': issue.ads.slug, 'issue_id': issue.id }) }}">Répondre</a>
+			    				{% endif %}
+			    			{% endif %}
+		    			</p>
+    				</div>
+    			</div>
+    		</div>

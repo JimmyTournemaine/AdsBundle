@@ -1,0 +1,16 @@
+{% extends 'JTAdsBundle::layout.html.twig' %}
+
+{% block content %}
+
+	{% include "JTAdsBundle:Ads:research_form.html.twig" %}
+
+	{% include "JTAdsBundle:Ads:list.html.twig" with {'entities': entities} %}
+{% endblock content %}
+
+{% block javascripts %}
+<script>
+	$(".table tr").click(function() {
+        window.document.location = $(this).data("href");
+	});
+</script>
+{% endblock %}

@@ -1,0 +1,12 @@
+jt_ads_answer:
+    resource: "@JTAdsBundle/Resources/config/routing/answer.yml"
+    prefix:   /answer
+
+jt_ads_issue:
+    resource: "@JTAdsBundle/Resources/config/routing/issue.yml"
+    prefix:   /issue
+
+jt_ads:
+    resource: "@JTAdsBundle/Resources/config/routing/ads.yml"
+    prefix:   /
+

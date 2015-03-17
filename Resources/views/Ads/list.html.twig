@@ -1,0 +1,24 @@
+
+<table class="table table-striped table-hover">
+	{% for entity in entities %}
+       	<tr data-href="{{ path('ads_show', { 'slug': entity.slug }) }}">
+       		<td>{{ entity.createdAt|localizeddate('long','none', app.request.locale) }}
+       		<td>
+       			{% if entity.images is not empty %}
+       				<img 
+       					src="{{ asset(entity.images|first.getWebPath()) }}"
+       					alt="Image principale pour l'annonce"
+       					style="min-height: 100px; max-height:2500px; min-width: 100px; max-width:250px;" />
+       			{% else %}
+       				Pas d'images
+       			{% endif %}
+       		</td>
+	        <td>
+	           	<h3>{{ entity.title }}</h3>
+	           	<p>{{ entity.price }} &euro;</p>
+	        </td>
+        </tr>
+    {% else %}
+    	<tr><td>Votre recherche n'a malheuresement donné aucun résultat.</td></tr>
+  	{% endfor %}
+</table>

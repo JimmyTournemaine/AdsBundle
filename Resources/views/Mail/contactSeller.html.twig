@@ -1,0 +1,9 @@
+{% extends "JTAdsBundle:Mail:layout.html.twig" %}
+
+{% block content %}
+<p class="lead">{{ contact.name }} souhaite vous contacter à propos de votre annonce 
+	<a href="{{ path('ads_show', {'slug': ads.slug }) }}">{{ ads.title }}</a></p>. 
+
+<p>Message de {{ contact.name }} &ldquo;{{ contact.mail }}&rdquo; : <br />
+{{ contact.message }}</p>
+{% endblock %}

@@ -1,0 +1,5 @@
+services:
+
+    jt.ads.mailer:
+        class: JT\AdsBundle\Mailer\Mailer
+        arguments: ["@mailer", "@templating"]

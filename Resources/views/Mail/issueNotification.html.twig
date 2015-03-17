@@ -1,0 +1,12 @@
+{% extends "JTAdsBundle:Mail:layout.html.twig" %}
+
+{% block content %}
+<p class="lead">{{ issue.questioner }} vous a posé une question à propos de votre annonce
+	<a href="{{ path('ads_show', {'slug': ads.slug }) }}">{{ ads.title }}</a></p>. 
+
+<p>La question est la suivante :<br /> 
+<strong>{{ issue.title }}</strong><br />
+{{ issue.content }}</p>
+
+<p>Rendez-vous sur votre annonce dès maintenant pour répondre à cette question !</p>
+{% endblock %}

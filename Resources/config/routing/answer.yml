@@ -1,0 +1,31 @@
+answer:
+    path:     /
+    defaults: { _controller: "JTAdsBundle:Answer:index" }
+
+answer_show:
+    path:     /{id}/show
+    defaults: { _controller: "JTAdsBundle:Answer:show" }
+
+answer_new:
+    path:     /{ads_slug}/{issue_id}/new
+    defaults: { _controller: "JTAdsBundle:Answer:new" }
+    requirements: { issue_id: "[0-9]+" }
+
+answer_create:
+    path:     /{ads_slug}/{issue_id}/create
+    defaults: { _controller: "JTAdsBundle:Answer:create" }
+    methods:  POST
+
+answer_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "JTAdsBundle:Answer:edit" }
+
+answer_update:
+    path:     /{id}/update
+    defaults: { _controller: "JTAdsBundle:Answer:update" }
+    methods:  [POST, PUT]
+
+answer_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "JTAdsBundle:Answer:delete" }
+    methods:  [POST, DELETE]

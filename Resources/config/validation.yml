@@ -1,0 +1,15 @@
+JT\AdsBundle\Entity\Ads:
+    properties:
+        title:
+            - Length:
+                min: 3
+                max: 255
+                minMessage: "Plus de 2 caractères sont requis."
+                maxMessage: "Le titre ne peux excéder 255 caractères."
+        price:
+            - NotBlank: ~
+        content:
+            - Length:
+                min: 10
+                minMessage: "Une annonce avec une description aussi courte n'est pas sérieuse."
+        

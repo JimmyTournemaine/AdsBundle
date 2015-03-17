@@ -1,0 +1,22 @@
+{
+    "name": "JimmyTournemaine/AdsBundle",
+    "type": "symfony-bundle"
+    "description": "This bundle allows you to implement an small-avertising system",
+    "license": "GNU General Public License v2.0",
+    "authors": [
+        {
+            "name": "Jimmy Tournemaine",
+            "email": "jimmy.tournemaine@yahoo.fr",
+            "homepage": "http://tournemaine.fr"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">= 5.3.3",
+	"symfony/symfony": "~2.6",
+	"doctrine/orm": "~2.2,>=2.2.3",
+        "doctrine/doctrine-bundle": "~1.2",
+	"symfony/swiftmailer-bundle": "~2.3",
+
+    }
+}

@@ -1,0 +1,10 @@
+{% extends 'JTAdsBundle::layout.html.twig' %}
+
+{% block content %}
+	<h2>Annonce : {{ ads.title }}</h2>
+	{% include "JTAdsBundle:Issue:new_content.html.twig" %}
+{% endblock %}
+
+{% block actions %}
+	<li><a href="{{ path('ads_show', {'slug': ads.slug }) }}">Retour à l'annonce</a></li>
+{% endblock %}

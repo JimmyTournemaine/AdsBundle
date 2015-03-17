@@ -1,0 +1,23 @@
+{% extends 'JTAdsBundle::layout.html.twig' %}
+
+{% block content %}
+    <h1>Modification de l'annonce</h1>
+
+    {{ form(edit_form) }} 
+    
+    <h2>Supression de l'annonce</h2>
+    
+    <div class="text-center">
+	    <p class="alert alert-warning">
+	    	Attention ! Toute supression de l'annonce sera définitive.
+	    	Vous ne pourrez plus être contactés.
+	    </p>
+    
+    	{{ form(delete_form) }}
+    </div>
+{% endblock %}
+
+{% block actions %}
+	<li><a href="{{ path('ads_show', {'slug': entity.slug}) }}">Retour à l'annonce</a></li>
+{% endblock %}
+

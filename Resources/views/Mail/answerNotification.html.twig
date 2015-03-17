@@ -1,0 +1,13 @@
+{% extends "JTAdsBundle:Mail:layout.html.twig" %}
+
+{% block content %}
+<p class="lead">{{ ads.seller.username }} à répondu à votre question au sujet de l'annonce
+	<a href="{{ path('ads_show', {'slug': ads.slug }) }}">{{ ads.title }}</a></p>. 
+
+<p>La réponse est la suivante :<br /> 
+{{ answer.content }}</p>
+
+<p>En réponse à votre question :<br /> 
+<strong>{{ issue.title }}</strong><br />
+{{ issue.content }}</p>
+{% endblock %}

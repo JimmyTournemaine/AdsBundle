@@ -1,0 +1,13 @@
+{% extends "JTAdsBundle::layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Contact{% endblock %}
+
+{% block content %}
+	<h1>Formulaire de contact</h1>
+	
+	{{ form(form) }}
+{% endblock %}
+
+{% block actions %}
+<li role="presentation"><a href="{{ path('ads_show', {'slug': entity.slug }) }}">Retour à l'annonce</a></li>
+{% endblock %}

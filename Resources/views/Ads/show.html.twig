@@ -1,0 +1,107 @@
+{% extends 'JTAdsBundle::layout.html.twig' %}
+
+{% block title %}{{ entity.title }}{% endblock %}
+
+{% block content%}
+
+    <h1>{{ entity.title }}</h1>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">         
+          <div class="modal-body">                
+          </div>
+        </div>
+      </div>
+    </div>
+    
+   	<div class="row">
+	   	<ul class="gallery">
+	   		{% for image in entity.images %}
+		       	<li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+		       		<img 
+		       			class="img-responsive img-thumbnail"
+		       			src="{{ asset(image.getWebPath()) }}" 
+		       			alt="Image figurative de l'annonce">
+		       	</li>
+		    {% else %}
+		    	<li><img style="height:100px; width:100px" class="img-thumbnail"></li>
+	       	{% endfor %}
+	   	</ul>
+   	</div>
+
+    <div class="panel panel-default">
+    	<div class="panel-heading">
+        	{{ entity.title }}
+        	<span class="pull-right"><small>{{ entity.createdAt|localizeddate('long','none',app.request.locale) }}</small></span>
+        </div>
+        <div class="panel-body">
+            <p>{{ entity.content }}</p>
+        </div>
+        <div class="panel-footer">
+        	<p><strong>Prix :</strong> {{ entity.price }} &euro;</p> 
+        </div>
+    </div>
+    <p>
+        <a class="btn btn-default" href="{{ path('ads_contact', {'slug': entity.slug }) 	}}">
+        	<i class="glyphicon glyphicon-envelope"></i> Contacter le vendeur
+        </a>
+        <a class="btn btn-default" href="{{ path('issue_new', 	{'ads_slug': entity.slug }) }}">
+        	<i class="glyphicon glyphicon-pencil"></i> Poser une question publique
+        </a>
+    </p>
+    
+    <div id="issues">
+    	<h3>Questions publiques</h3>
+    	{% for issue in entity.issues %}
+    		{{ render(controller("JTAdsBundle:Issue:show", {'ads_slug': entity.slug, 'id': issue.id })) }}
+    	{% else %}
+    		Aucun question
+    	{% endfor %}
+    </div>
+    
+    
+
+{% endblock %}
+
+{% block actions %}
+	{% if is_granted('EDIT', entity) %}
+    	<li><a href="{{ path('ads_edit', 	{ 'slug': entity.slug }) 	}}">Modifier cette annonce</a></li>
+    {% endif %}
+    <li><a href="{{ path('issue_new', 	{'ads_slug': entity.slug }) }}">Poser une question publique</a></li>
+    <li><a href="{{ path('ads_contact', {'slug': entity.slug }) 	}}">Contacter le vendeur</a></li>
+{% endblock actions %}
+
+{% block stylesheets %}
+<style>
+
+.gallery {
+padding:0000;margin:0000;
+}
+.gallery li{
+list-style:none;
+margin-bottom:25px;
+}
+.gallery li img{
+cursor:pointer;
+}
+</style>
+{% endblock %}
+
+{% block javascripts %}
+ <script>
+ $(document).ready(function(){
+     $('li img').on('click',function(){
+          var src = $(this).attr('src');
+          var img = '<img src="' + src + '" class="img-responsive"/>';
+          $('#myModal').modal();
+          $('#myModal').on('shown.bs.modal', function(){
+              $('#myModal .modal-body').html(img);
+          });
+          $('#myModal').on('hidden.bs.modal', function(){
+              $('#myModal .modal-body').html('');
+          });
+     });  
+  })
+</script>
+{% endblock %}
