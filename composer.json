@@ -1,5 +1,5 @@
 {
-    "name": "JimmyTournemaine/AdsBundle",
+    "name": "jimmy-tournemaine/ads-bundle",
     "type": "symfony-bundle",
     "description": "This bundle allows you to implement an small-avertising system",
     "keywords": ["ads","advert","advertising","annonces","ad"],
