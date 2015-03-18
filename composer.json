@@ -23,7 +23,7 @@
     },
     "autoload" : {
         "psr-0": {
-            "JT\AdsBundle"
+            "JT\\AdsBundle"
         }
     },
     "target-dir": "jimmy-tournemaine/ads-bundle"
