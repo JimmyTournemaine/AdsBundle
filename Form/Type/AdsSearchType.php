@@ -1,10 +1,9 @@
 <?php
 
-namespace JT\AdsBundle\Form;
+namespace JT\AdsBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Validator\Constraints\Length;
 
 class AdsSearchType extends AbstractType

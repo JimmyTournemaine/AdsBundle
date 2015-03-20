@@ -10,13 +10,12 @@ use Symfony\Component\Security\Acl\Domain\UserSecurityIdentity;
 use Symfony\Component\Security\Acl\Permission\MaskBuilder;
 
 use JT\AdsBundle\Entity\Ads;
-use JT\AdsBundle\Entity\Image;
 use JT\AdsBundle\Entity\Contact;
-use JT\AdsBundle\Entity\Research;
-use JT\AdsBundle\Form\AdsType;
-use JT\AdsBundle\Form\AdsEditType;
-use JT\AdsBundle\Form\AdsSearchType;
-use JT\AdsBundle\Form\ContactType;
+use JT\AdsBundle\Form\AdsForm;
+use JT\AdsBundle\Form\Type\AdsType;
+use JT\AdsBundle\Form\Type\AdsEditType;
+use JT\AdsBundle\Form\Type\AdsSearchType;
+use JT\AdsBundle\Form\Type\ContactType;
 
 /**
  * Ads controller.
@@ -132,8 +131,6 @@ class AdsController extends Controller
      */
     public function showAction(Ads $entity)
     {
-        $em = $this->getDoctrine()->getManager();
-
         $deleteForm = $this->createDeleteForm($entity);
 
         return $this->render('JTAdsBundle:Ads:show.html.twig', array(
@@ -154,8 +151,6 @@ class AdsController extends Controller
     	{
     		throw new AccessDeniedException();
     	}
-    	
-        $em = $this->getDoctrine()->getManager();
 
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($entity);
@@ -262,7 +257,6 @@ class AdsController extends Controller
      */
     public function contactAction(Ads $entity){
     	
-    	$em = $this->getDoctrine()->getManager();
     	$contact = new Contact();
     	
     	$contactForm = $this->createContactForm($contact, $entity);
@@ -296,7 +290,6 @@ class AdsController extends Controller
      */
     public function sendAction(Request $request, Ads $entity)
     {
-    	$em = $this->getDoctrine()->getManager();
     	$contact = new Contact();
     	
     	$contactForm = $this->createContactForm($contact, $entity);

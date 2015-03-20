@@ -2,9 +2,35 @@
 
 namespace JT\AdsBundle\Mailer;
 
-use JT\MainBundle\Mailer\Mailer as BaseMailer;
+use Symfony\Component\Templating\EngineInterface;
 
-class Mailer extends BaseMailer {
+class Mailer {
+	
+	protected $mailer;
+	protected $templating;
+	
+	private $from = "noreply@tournemaine.fr";
+	private $reply = "services@tournemaine.fr";
+	private $name = "Jimmy Tournemaine Website";
+	
+	public function __construct($mailer, EngineInterface $templating){
+		$this->mailer = $mailer;
+		$this->templating = $templating;
+	}
+	
+	protected function sendMessage($to, $subject, $body) {
+	
+		$mail = \Swift_Message::newInstance();
+		$mail
+		->setFrom($this->from, $this->name)
+		->setTo($to)
+		->setSubject($subject)
+		->setBody($body)
+		->setReplyTo($this->reply, $this->name)
+		->setContentType('text/html');
+	
+		return ($this->mailer->send($mail)) ? true : false;
+	}
 	
 	/**
 	 * Send a mail for an ads from the interested person to the seller

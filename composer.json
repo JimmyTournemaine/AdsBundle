@@ -4,7 +4,7 @@
     "description": "This bundle allows you to implement an small-avertising system",
     "keywords": ["ads","advert","advertising","annonces","ad"],
     "homepage": "http://github.com/JimmyTournemaine/AdsBundle",
-    "license": "GNU General Public License v2.0",
+    "license": "proprietary",
     "authors": [
         {
             "name": "Jimmy Tournemaine",

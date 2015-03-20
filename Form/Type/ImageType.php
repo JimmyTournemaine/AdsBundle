@@ -1,6 +1,6 @@
 <?php
 
-namespace JT\AdsBundle\Form;
+namespace JT\AdsBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;

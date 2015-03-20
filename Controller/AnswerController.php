@@ -5,12 +5,11 @@ namespace JT\AdsBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 use JT\AdsBundle\Entity\Ads;
 use JT\AdsBundle\Entity\Answer;
 use JT\AdsBundle\Entity\Issue;
-use JT\AdsBundle\Form\AnswerType;
+use JT\AdsBundle\Form\Type\AnswerType;
 
 /**
  * Answer controller.

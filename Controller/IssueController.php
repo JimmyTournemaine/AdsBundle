@@ -12,8 +12,8 @@ use Symfony\Component\Security\Acl\Permission\MaskBuilder;
 
 use JT\AdsBundle\Entity\Ads;
 use JT\AdsBundle\Entity\Issue;
-use JT\AdsBundle\Form\IssueType;
-use JT\AdsBundle\Form\IssueEditType;
+use JT\AdsBundle\Form\Type\IssueType;
+use JT\AdsBundle\Form\Type\IssueEditType;
 
 /**
  * Issue controller.

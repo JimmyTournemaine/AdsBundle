@@ -1,12 +1,12 @@
 <?php
 
-namespace JT\AdsBundle\Form;
+namespace JT\AdsBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class IssueEditType extends AbstractType
+class ContactType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,10 +15,15 @@ class IssueEditType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', 'text', array(
-            	'disabled' => true,
+            ->add('name', 'text', array(
+            	'label' => 'Votre nom'
             ))
-            ->add('content', 'textarea')
+            ->add('mail', 'email', array(
+            		'label' => 'Votre email'
+            ))
+            ->add('message', 'textarea', array(
+            	'label' => 'Votre message'
+            ))
         ;
     }
     
@@ -28,7 +33,7 @@ class IssueEditType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'JT\AdsBundle\Entity\Issue'
+            'data_class' => 'JT\AdsBundle\Entity\Contact'
         ));
     }
 
@@ -37,6 +42,6 @@ class IssueEditType extends AbstractType
      */
     public function getName()
     {
-        return 'jt_adsbundle_edit_issue';
+        return 'jt_adsbundle_contact';
     }
 }

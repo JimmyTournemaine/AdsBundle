@@ -20,9 +20,18 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('jt_ads');
 
-        // Here you should define the parameters that are allowed to
-        // configure your bundle. See the documentation linked above for
-        // more information on that topic.
+        $rootNode
+        	->children()
+        		->scalarNode('user')
+        			->children()
+        				->scalarNode('class')
+        					->isRequired()
+        					->cannotBeEmpty()
+        				->end()
+        			->end()
+        		->end()
+        	->end()
+        ;
 
         return $treeBuilder;
     }

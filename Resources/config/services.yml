@@ -2,4 +2,7 @@ services:
 
     jt.ads.mailer:
         class: JT\AdsBundle\Mailer\Mailer
-        arguments: ["@mailer", "@templating"]
+        arguments:
+            - "@mailer"
+            - "@templating"
+            - "@=container.has('some_param') ? get('some_param') : 'default_value'"
