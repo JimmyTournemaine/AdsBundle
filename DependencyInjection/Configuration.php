@@ -22,15 +22,15 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
         	->children()
-        		->scalarNode('user')
-        			->children()
-        				->scalarNode('class')
-        					->isRequired()
-        					->cannotBeEmpty()
-        				->end()
-        			->end()
-        		->end()
-        	->end()
+	        	->arrayNode('user')
+	        		->children()
+	        			->scalarNode('class')
+	        				->isRequired()
+	        				->cannotBeEmpty()
+	        				->end()
+	        		->end()
+	        	->end()
+	        ->end()
         ;
 
         return $treeBuilder;
