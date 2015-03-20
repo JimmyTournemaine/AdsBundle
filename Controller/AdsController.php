@@ -11,7 +11,6 @@ use Symfony\Component\Security\Acl\Permission\MaskBuilder;
 
 use JT\AdsBundle\Entity\Ads;
 use JT\AdsBundle\Entity\Contact;
-use JT\AdsBundle\Form\Type\AdsForm;
 use JT\AdsBundle\Form\Type\AdsType;
 use JT\AdsBundle\Form\Type\AdsEditType;
 use JT\AdsBundle\Form\Type\AdsSearchType;
