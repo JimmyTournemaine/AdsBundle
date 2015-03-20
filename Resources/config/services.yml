@@ -5,4 +5,3 @@ services:
         arguments:
             - "@mailer"
             - "@templating"
-            - "@=container.has('some_param') ? get('some_param') : 'default_value'"
