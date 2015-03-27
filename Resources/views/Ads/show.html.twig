@@ -59,9 +59,11 @@
     		Aucun question
     	{% endfor %}
     </div>
-    
-    
+{% endblock %}
 
+{% block above %}
+	<h3 class="text-center">Vendeur</h3>
+	{{ include("JTAdsBundle:Ads:rating.html.twig", {'seller': entity.seller, 'note': note}) }}	
 {% endblock %}
 
 {% block actions %}
@@ -89,7 +91,7 @@ cursor:pointer;
 {% endblock %}
 
 {% block javascripts %}
- <script>
+ <script> /* Picture Gallery */
  $(document).ready(function(){
      $('li img').on('click',function(){
           var src = $(this).attr('src');

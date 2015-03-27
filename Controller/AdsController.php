@@ -31,7 +31,7 @@ class AdsController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $entities = $em->getRepository('JTAdsBundle:Ads')->findAll();
-
+		
         $form = $this->createResearchForm();
         
         return $this->render('JTAdsBundle:Ads:index.html.twig', array(
@@ -41,7 +41,7 @@ class AdsController extends Controller
     }
     
     /**
-     * Creates a new Ads entity.
+     * Creates a new Ads entity. Add a Rating entity cause the user is now a seller.
      * @method POST
      */
     public function createAction(Request $request)
@@ -58,10 +58,15 @@ class AdsController extends Controller
         /* Validation */
         if ($form->isValid()) {
         	
-        	$entity->setSeller($this->getUser());
-
+        	$seller = $this->getUser();
+        	$entity->setSeller($seller);
+        	$rating = new \JT\AdsBundle\Entity\Rating();
+        	$rating->setUser($seller);
+        	
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
+            $em->persist($rating);
+            
             $em->flush();
             
             /* Add ACEs */
@@ -131,8 +136,10 @@ class AdsController extends Controller
     public function showAction(Ads $entity)
     {
         $deleteForm = $this->createDeleteForm($entity);
+        $rating = $this->getDoctrine()->getManager()->getRepository('JTAdsBundle:Rating')->findOneByUser($entity->getSeller());
 
         return $this->render('JTAdsBundle:Ads:show.html.twig', array(
+        	'note'		  => $rating->getRatio(),
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
         ));

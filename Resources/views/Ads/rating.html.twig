@@ -1,0 +1,15 @@
+{# vars : User seller, float note #}
+
+<a href="{{ path('ads_vote_show', {'username': seller.username }) }}" />
+	<p>{{ seller.username }}</p>
+	{% if note is not null %}
+		<div class="col-sm-12">
+			{{ note|stars(10) }}
+		</div>
+	{% else %}
+		Ce vendeur n'a reçu aucun avis.
+	{% endif %}
+</a>
+<p>
+	<a href="{{ path('ads_vote', {'username': seller.username}) }}">Laisser un avis</a>
+</p>

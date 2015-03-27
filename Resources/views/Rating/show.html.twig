@@ -1,0 +1,30 @@
+{% extends "JTAdsBundle::layout.html.twig" %}
+
+{% block content %}
+	<h3>{{ user.username }}</h3>
+	{{ include("JTAdsBundle:Ads:rating.html.twig", {'seller': user, 'note': rating.ratio}) }}
+	
+	<ul class="nav nav-tabs nav-justified" role="tablist">
+  		<li role="presentation" class="active">
+  			<a href="#notes" aria-controls="notes" role="tab" data-toggle="tab">Notes</a>
+  		</li>
+    	<li role="presentation">
+    		<a href="#avis" aria-controls="avis" role="tab" data-toggle="tab">Avis</a>
+    	</li>
+	</ul>
+	
+	<div class="tab-content">
+    	<div role="tabpanel" class="tab-pane active" id="notes">
+    		{% for vote in votes %}
+    			<p>{{ vote.note|stars('10') }}</p>
+    		{% endfor %}
+    	</div>
+    	<div role="tabpanel" class="tab-pane" id="avis">
+    		{% for vote in votes %}
+    			<p>{{ vote.review }}</p>
+    		{% endfor %}
+    	</div>
+    </div>
+	
+	
+{% endblock %}

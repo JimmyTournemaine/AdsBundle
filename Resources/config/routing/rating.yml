@@ -1,0 +1,7 @@
+ads_vote:
+    path:     /{username}/vote
+    defaults: { _controller: "JTAdsBundle:Rating:vote" }
+    
+ads_vote_show:
+    path:     /{username}/show
+    defaults: { _controller: "JTAdsBundle:Rating:show" }
